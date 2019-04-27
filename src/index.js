@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import Countries from './components/countries';
+import Country from './components/country';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Root = (
+    <BrowserRouter>
+        <Switch>
+            <Route exac path='/countries' component={Countries} />
+            <Route path='/country/:itemId' component={Country} />
+            <Redirect from='/' to='countries' />
+        </Switch>
+    </BrowserRouter>
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(Root, document.getElementById('root'));

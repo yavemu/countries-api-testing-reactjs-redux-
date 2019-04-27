@@ -1,14 +1,11 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import countries from './reducers/countries';
-import country from './reducers/country';
-import currentCountry from './reducers/currentCountry';
 
 const reducer = combineReducers({
     countries,
-    country,
-    currentCountry
 });
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;

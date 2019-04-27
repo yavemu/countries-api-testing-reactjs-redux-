@@ -1,11 +1,24 @@
 import React, { Fragment } from "react";
 
 function Page(props) {
-    return(
-        <Fragment>
-            Countries!!!!
-        </Fragment>
-    )
+  return (
+    <Fragment>
+      {props.countries.length > 0 
+        ?
+            <ul>
+                {props.countries.map((country, index) => {
+                return (
+                    <li key={index}>
+                        {country.name}
+                    </li>
+                );
+                })}
+            </ul>
+        :
+            <b>There are no countries</b>
+      }
+    </Fragment>
+  );
 }
 
 export default Page;

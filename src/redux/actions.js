@@ -12,3 +12,14 @@ export const getCountries = () => async (dispatch) => {
         dispatch(handleApiError(error));
     }
 };
+
+export const getCountryByCodeSuccess = createAction('getCountryByCodeSuccess');
+export const getCountryByCode = (code) => async (dispatch) => {
+    try {
+        const response = await api.countries.getByCode(code);
+        
+        dispatch(getCountryByCodeSuccess(response.data));
+    } catch (error) {
+        dispatch(handleApiError(error));
+    }
+};

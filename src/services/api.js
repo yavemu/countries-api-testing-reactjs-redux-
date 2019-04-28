@@ -10,6 +10,10 @@ const countries = {
         url: 'all',
         method: 'GET',
     }),
+    getByCode: (code) => requestHelper({
+        url: `alpha/${code}`,
+        method: 'GET',
+    }),
 }
 
 

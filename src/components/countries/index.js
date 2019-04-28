@@ -10,13 +10,22 @@ class Countries extends Component{
 
     state = {};
 
+    constructor() {
+        super();
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(code) {
+        this.props.history.push(`/country/${code}`)
+    }
+
     componentDidMount(){
         this.props.action_getCountries();
     }
     
     render(){
         return (
-            <Page countries={this.props.countries}/>
+            <Page countries={this.props.countries} onClick={this.handleClick}/>
         )
     }
 }
